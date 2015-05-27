@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="60cc7f6f-67fe-440c-8a89-71bfa9903173">
+    <database-info product="MySQL" version="5.6.22-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="information"/>
+    <table name="公交数据表" schema="" catalog="information" type="TABLE">
+      <column name="日期" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="到站人数" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="图" sqlType="CHAR" precision="16" scale="0" nullable="false" jdbcType="1"/>
+      <column name="节" sqlType="CHAR" precision="16" scale="0" nullable="false" jdbcType="1"/>
+      <column name="其他" sqlType="CHAR" precision="16" scale="0" nullable="false" jdbcType="1"/>
+    </table>
+    <table name="出租数据表" schema="" catalog="information" type="TABLE">
+      <column name="日期" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="车次" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="定员" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="到站人数" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="接站车辆" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="图" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="节" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="其他" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+    </table>
+    <table name="用户注册表" schema="" catalog="information" type="TABLE">
+      <column name="username" sqlType="CHAR" precision="30" scale="0" nullable="false" jdbcType="1"/>
+      <column name="password" sqlType="CHAR" precision="30" scale="0" nullable="false" jdbcType="1"/>
+    </table>
+    <table name="铁路数据表一" schema="" catalog="information" type="TABLE">
+      <column name="日期" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="车次" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="定员" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="到发数" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="图" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="节" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="其他" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+    </table>
+    <table name="铁路数据表二" schema="" catalog="information" type="TABLE">
+      <column name="日期" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="车次" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="人数" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="图" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="节" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="其他" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+      <column name="类型" sqlType="CHAR" precision="16" scale="0" nullable="true" jdbcType="1"/>
+    </table>
+  </data-source>
+</component>
