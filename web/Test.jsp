@@ -37,7 +37,8 @@
 </script>--%>
   </head>
   <body>
-    <h1>THis is my FirstPage</h1>
+    <h1>THis is my FirstPage</h1
+        <h2>adsfasdfaf</h2>
     <%--实例化一个对象，指定实体Bean，指定有效范围--%>
     <jsp:useBean id="user1" class="com.Diablo.JDBC.UserInfo" scope="page" />
     <%--获取实体类的值--%>
