@@ -13,11 +13,11 @@
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".navbar-responsive-collapse"
-             data-toggle="collapse"></a> <a class="brand" href="#">Data-Analysis</a>
+             data-toggle="collapse"></a> <a class="brand" href="index.jsp">Data-Analysis</a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul class="nav">
               <li>
-                <a href="http://www.163.com">Introduction</a>
+                <a href="introduction.jsp">Introduction</a>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown"

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/Diablo/Filter/EncodingFilter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/Diablo/JDBC/BusInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/Diablo/JDBC/JDBCServlet.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/Diablo/JDBC/QueryRunnerCRUDTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/Diablo/JDBC/UserInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/Diablo/JUnit/JUnitTest.java" charset="GBK" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

@@ -24,6 +24,8 @@ public class LogoutServlet extends HttpServlet {
         rd = request.getRequestDispatcher("/index.jsp");                    //跳转路径
         //转发请求
         rd.forward(request,response);
+
+        /*response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));*/
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
