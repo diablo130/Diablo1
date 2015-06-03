@@ -11,6 +11,7 @@ import java.io.IOException;
 
 /**
  * Created by 黄粟 on 2015/5/25.
+ * function：表头上的用户登出校验
  */
 @WebServlet(name = "LogoutServlet",urlPatterns = "/src/com.Diablo.Web/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
@@ -20,10 +21,7 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         //设置session属性，跟踪用户会话状态
         session.setAttribute("login","no");
-        //获取转发对象
-        rd = request.getRequestDispatcher("/index.jsp");                    //跳转路径
-        //转发请求
-        rd.forward(request,response);
+        response.sendRedirect("/index.jsp");
 
         /*response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));*/
     }

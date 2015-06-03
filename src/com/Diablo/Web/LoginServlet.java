@@ -49,29 +49,27 @@ public class LoginServlet extends HttpServlet {
                     //设置session属性，跟踪用户会话状态
                     session.setAttribute("login","yes");
                     session.setAttribute("myname" , username);
-                    //获取转发对象
+                    /*//获取转发对象
                     rd = request.getRequestDispatcher("/index.jsp");                    //跳转路径
                     //转发请求
-                    rd.forward(request,response);
-                    System.out.print(request.getServletPath() +".....path:"+ request.getRequestURI()+"...."+request.getRequestURL()
-                    +"..."+request.getLocalAddr());
+                    rd.forward(request,response);*/
+                    response.sendRedirect("/index.jsp");
+                    System.out.print(request.getServletPath() + ".....path:" + request.getRequestURI() + "...." + request.getRequestURL()
+                            + "..." + request.getLocalAddr());
                 }
                 else {
                     session.setAttribute("login","no");
-                    //获取转发对象
-                    rd = request.getRequestDispatcher("/MainPage.jsp");                    //跳转路径
-                    //转发请求
-                    rd.forward(request,response);
+                    response.sendRedirect("/index.jsp");
                 }
             }
             else {
                 session.setAttribute("login","no");
+                /*request.setAttribute("username","");
+                request.setAttribute("password","");*/
                 //获取转发对象
-                rd = request.getRequestDispatcher("/MainPage.jsp");                    //跳转路径
+                response.sendRedirect("/index.jsp");
                 //转发请求
-                request.setAttribute("username","");
-                request.setAttribute("password","");
-                rd.forward(request,response);
+
             }
         } catch (Exception e) {
             throw new RuntimeException("Failure");

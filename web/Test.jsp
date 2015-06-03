@@ -45,6 +45,12 @@
 </head>
 <body>
 <h1>THis is my FirstPage</h1>
+<%
+
+%>
+
+
+<br/>
 action参数：<c:out value="${param.action}"></c:out>
 <fieldset>
     <c:if test="${param.action=='add'}">

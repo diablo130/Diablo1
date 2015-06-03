@@ -21,6 +21,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import java.util.*;
 /**
  * Created by 黄粟 on 2015/5/18.
+ * function:用户注册校验
  */
 @WebServlet(name = "FormShow",urlPatterns = "/src/com.Diablo.Web/FormShow")
 public class FormShow extends HttpServlet {
@@ -30,7 +31,7 @@ public class FormShow extends HttpServlet {
         /*response.setContentType("text/html;charset=GBK");*/
         String username = request.getParameter("user").trim();
         String password = request.getParameter("pwd").trim();
-        /*System.out.println(username+"......"+password);*/
+
         QueryRunner qr = new QueryRunner();
         Connection conn=null;
         conn = DbUtiles.getConnection();
@@ -47,16 +48,13 @@ public class FormShow extends HttpServlet {
                 session.setAttribute("login","yes");
                 session.setAttribute("myname" , username);
                 //获取转发对象
-                rd = request.getRequestDispatcher("/index.jsp");                    //跳转路径
-                //转发请求
-                rd.forward(request, response);
+                response.sendRedirect("/index.jsp");
             }
             else{
                 UserInfo ui = (UserInfo) ResultInfo.get(0);
                 if (ui.getUsername().equals(username)) {
                     System.out.println("用户名已经存在");
-                    rd = request.getRequestDispatcher("/index.jsp");
-                    rd.forward(request, response);                      //??????
+                    response.sendRedirect("/index.jsp");
                 }
                 /*else {
                 }*/

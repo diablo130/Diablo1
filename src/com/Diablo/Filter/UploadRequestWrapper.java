@@ -14,6 +14,7 @@ import java.util.*;
 
 /**
  * Created by 黄粟 on 2015/5/29.
+ * function:文件上传类
  */
 public class UploadRequestWrapper extends HttpServletRequestWrapper{
     //文件类型头
