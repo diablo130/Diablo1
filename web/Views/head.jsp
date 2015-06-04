@@ -13,7 +13,7 @@
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".navbar-responsive-collapse"
-             data-toggle="collapse"></a> <a class="brand" href="introduction.jsp">Data-Analysis</a>
+             data-toggle="collapse"></a> <a class="brand" href="index.jsp">Data-Analysis</a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul class="nav">
               <li>

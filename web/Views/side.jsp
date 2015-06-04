@@ -12,7 +12,7 @@
   <div class="accordion" id="accordion-364724">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle collapsed" data-parent="#accordion-364724"  href="introduction.jsp">Introduction(介绍)</a>
+        <a class="accordion-toggle collapsed" data-parent="#accordion-364724"  href="index.jsp">Introduction(介绍)</a>
       </div>
     </div>
     <div class="accordion-group">
@@ -63,7 +63,7 @@
     <div class="accordion-group">
       <div class="accordion-heading">
         <a class="accordion-toggle" data-parent="#accordion-364724" data-
-           toggle="collapse" href="http://www.test.com">Help(帮助)</a>
+           toggle="collapse" href="showdata.jsp">Help(帮助)</a>
       </div>
     </div>
   </div>

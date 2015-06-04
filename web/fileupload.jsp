@@ -84,7 +84,12 @@ To change this template use File | Settings | File Templates.
     ${me.value}<a href="${downurl}">下载</a>
     <br/>
 </c:forEach>
-
+<br/><br/><br/>
+<hr/>
+<form action="${pageContext.request.contextPath}/src/com.Diablo.Web/UploadHanderServlet" enctype="multipart/form-data" method="post">
+    <input type="file" name="ada" multiple="multiple"/>
+    <input type="submit" value="submit"/>
+</form>
 </body>
 </html>
 

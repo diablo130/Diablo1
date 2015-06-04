@@ -22,16 +22,15 @@ public class AccessFilter implements Filter {
         HttpSession httpSession=hsr.getSession();
         String path=hsr.getRequestURI();
         System.out.println("·ÃÎÊÂ·¾¶:"+path);
-
-        String status=(String)httpSession.getAttribute("login");
-        System.out.println("µÇÂ¼×´Ì¬:"+status);
-        if("yes".equals(status)){
-            chain.doFilter(req, resp);
+        if(!path.endsWith("/index.jsp")) {
+            String status = (String) httpSession.getAttribute("login");
+            System.out.println("µÇÂ¼×´Ì¬:" + status);
+            if ("yes".equals(status)) {
+                chain.doFilter(req, resp);
+            } else {
+                hsp.sendRedirect("/index.jsp");
+            }
         }
-        else{
-            hsp.sendRedirect("/index.jsp");
-        }
-
     }
 
     public void init(FilterConfig config) throws ServletException {
