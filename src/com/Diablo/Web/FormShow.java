@@ -21,7 +21,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import java.util.*;
 /**
  * Created by 黄粟 on 2015/5/18.
- * function:用户注册校验
+ * Description:用户注册校验
  */
 @WebServlet(name = "FormShow",urlPatterns = "/src/com.Diablo.Web/FormShow")
 public class FormShow extends HttpServlet {

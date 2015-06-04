@@ -45,9 +45,13 @@
 </head>
 <body>
 <h1>THis is my FirstPage</h1>
-<%
+<br/>
+<form action="" method="post">
+    upload1:<input type="file" name="file1"/><br/>
+    upload2:<input type="file  name="file2"/><br/>
+    <input type="submit" name="submit" />
+</form>
 
-%>
 
 
 <br/>

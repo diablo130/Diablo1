@@ -26,6 +26,11 @@ To change this template use File | Settings | File Templates.
 <script type="text/javascript" src="/Script/esl.js"></script>
 <script src="/Script/echarts-all.js"></script>
 
+
+<script src="/Script/vendor/jquery.ui.widget.js"></script>
+<script src="/Script/jquery.iframe-transport.js"></script>
+<script src="/Script/jquery.fileupload.js"></script>
+
 <script>
   $(document).ready(function(){
     $('.dropdown-toggle').dropdown();
@@ -204,8 +209,22 @@ To change this template use File | Settings | File Templates.
           <h3 style="color: #999999;padding-top: 10px;padding-left: 10px;">
             Result Display<%--<button type="button">abc</button>--%>
           </h3>
-
-          <div id="main"style="height: 400px">
+          <script>
+            $("#fileupload_input").fileupload({
+              url:"files/upload",//文件上传地址，当然也可以直接写在input的data-url属性内
+              formData:{param1:"p1",param2:"p2"},//如果需要额外添加参数可以在这里添加
+              done:function(e,result){
+                //done方法就是上传完毕的回调函数，其他回调函数可以自行查看api
+                //注意result要和jquery的ajax的data参数区分，这个对象包含了整个请求信息
+                //返回的数据在result.result中，假设我们服务器返回了一个json对象
+                console.log(JSON.stringify(result.result));
+              }
+            })
+          </script>
+          <div>
+              <input type="file" name="fileupload_input"  />
+          </div>
+          <%--<div id="main"style="height: 400px">
               <script type="text/javascript">
                 // 基于准备好的dom，初始化echarts图表
                 var myChart = echarts.init(document.getElementById('main'));
@@ -241,7 +260,7 @@ To change this template use File | Settings | File Templates.
                 myChart.setOption(option);
               </script>
           </div>
-
+--%>
     </div>
   </div>
 </div>
