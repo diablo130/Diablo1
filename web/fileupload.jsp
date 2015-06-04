@@ -6,7 +6,7 @@ Time: 12:11
 To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html
 <%--<meta charset="utf-8">--%>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,7 +65,25 @@ To change this template use File | Settings | File Templates.
     上传文件2：<input type="file" name="file2"><br/>
     <input type="submit" value="提交">
 </form>
+<br/><br/><br/>
+<hr/>
+<h1>下载</h1>
+<a href="src/com.Diablo.Web/GetDownMapServlet">access</a>
+<%--<c:forEach var="file" items="${fileNameMap}">
+    <c:url value="/src/com.Diablo.Web/DownloadHandlerServlet" var="downurl">
+        <c:param name="filename" value="${file.key}"></c:param>
+        ${file.value}<a href="${downurl}">下载</a>
+    </c:url>
 
+</c:forEach>--%>
+<!-- 遍历Map集合 -->
+<c:forEach var="me" items="${fileNameMap}">
+    <c:url value="/src/com.Diablo.Web/DownloadHandlerServlet" var="downurl">
+        <c:param name="filename" value="${me.key}"></c:param>
+    </c:url>
+    ${me.value}<a href="${downurl}">下载</a>
+    <br/>
+</c:forEach>
 
 </body>
 </html>
