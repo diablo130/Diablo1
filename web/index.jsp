@@ -27,49 +27,48 @@ To change this template use File | Settings | File Templates.
 <script src="/Script/echarts-all.js"></script>
 
 <script>
-  $(document).ready(function(){
-    $('.dropdown-toggle').dropdown();
+    $(document).ready(function(){
+        $('.dropdown-toggle').dropdown();
 
-    /*$("#passid").hide();*/      //关闭注册
-    /*$("#registerid").attr("disabled", true);*/            //注册按钮失效
+        /*$("#passid").hide();*/      //关闭注册
+        /*$("#registerid").attr("disabled", true);*/            //注册按钮失效
 
 
-    /*function clearForm(form) {    //清空表单
-     // iterate over all of the inputs for the form
-     // element that was passed in
-     $(':input', form).each(function() {
-     var type = this.type;
-     var tag = this.tagName.toLowerCase(); // normalize case
-     // it's ok to reset the value attr of text inputs,
-     // password inputs, and textareas
-     if (type == 'text' || type == 'password' || tag == 'textarea')
-     this.value = "";
-     // checkboxes and radios need to have their checked state cleared
-     // but should *not* have their 'value' changed
-     else if (type == 'checkbox' || type == 'radio')
-     this.checked = false;
-     // select elements need to have their 'selectedIndex' property set to -1
-     // (this works for both single and multiple select elements)
-     else if (tag == 'select')
-     this.selectedIndex = -1;
-     });
-     };*/
-  })
+        /*function clearForm(form) {    //清空表单
+         // iterate over all of the inputs for the form
+         // element that was passed in
+         $(':input', form).each(function() {
+         var type = this.type;
+         var tag = this.tagName.toLowerCase(); // normalize case
+         // it's ok to reset the value attr of text inputs,
+         // password inputs, and textareas
+         if (type == 'text' || type == 'password' || tag == 'textarea')
+         this.value = "";
+         // checkboxes and radios need to have their checked state cleared
+         // but should *not* have their 'value' changed
+         else if (type == 'checkbox' || type == 'radio')
+         this.checked = false;
+         // select elements need to have their 'selectedIndex' property set to -1
+         // (this works for both single and multiple select elements)
+         else if (tag == 'select')
+         this.selectedIndex = -1;
+         });
+         };*/
+    })
 </script>
 <body>
 <div class="container-fluid" style="height: 600px">
-  <%@include file="Views/head.jsp"%>                       <%--头部页面--%>
+    <%@include file="Views/head.jsp"%>                       <%--头部页面--%>
     <div class="row-fluid" >                                <%--内容页面--%>
         <%--侧边栏--%>
         <%@ include file="Views/side.jsp"%>
-
         <div class="span8" style="border: aqua 2px solid;height: 500px">
             <%-- <h3 style="color: #999999">Fast-Entry</h3>--%>
             <h3 style="color: #999999;padding-top: 10px;padding-left: 10px;">
                 Result Display<%--<button type="button">abc</button>--%>
             </h3>
 
-            <%@include file="Views/functions.jsp"%>
+            <%@include file="Views/intro.jsp"%>             <%--只需要改变这里的内容就可以了--%>
         </div>
     </div>
 </div>

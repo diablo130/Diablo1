@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by 黄粟 on 2015/6/3.
  * function:登录过滤器，没有登录的用户只能在index.jsp观看
  */
-@WebFilter(filterName = "AccessFilter",urlPatterns = "/introduction.jsp")
+@WebFilter(filterName = "AccessFilter",urlPatterns = "/showdata.jsp")
 public class AccessFilter implements Filter {
     public void destroy() {
     }
