@@ -14,8 +14,8 @@
     <script type="text/javascript" src="/Script/jquery.js"></script>
     <script type="text/javascript" src="/Script/bootstrap.min.js"></script>
     <script type="text/javascript" src="/Script/esl.js"></script>
-    <script type="text/javascript" src="Script/echarts-all.js"></script>
-
+    <script type="text/javascript" src="/Script/echarts-all.js"></script>
+    <script type="text/javascript" src="/Script/Ajax.js"></script>
     <script>
         /*$(function(){
 
@@ -23,6 +23,7 @@
         function status() {
             alert("123123");
             <%--<jsp:forward page="Test.jsp" />--%>
+
 
         }
     </script>
@@ -44,15 +45,16 @@
 </script>--%>
 </head>
 <body>
-<h1>THis is my FirstPage</h1>
-<br/>
-<form action="" method="post">
-    upload1:<input type="file" name="file1"/><br/>
-    upload2:<input type="file  name="file2"/><br/>
-    <input type="submit" name="submit" />
+<h1>Test Ajax</h1><p>
+<form action="" method="get" name="form">
+    <br>
+    输入用户名：
+    <input type="text" size="10" maxlength="8" id="userName" name="name" onblur="validate()">
+    <span id="info"></span>
+    <br>
+    输入商品名：
+    <input type="text" size="10" maxlength="8" >
 </form>
-
-
 
 <br/>
 action参数：<c:out value="${param.action}"></c:out>

@@ -11,7 +11,6 @@
 <head>
     <title>Register Page</title>
   <script type="text/javascript" src="/Script/jquery.js"></script>
-  <script type="text/javascript" src="/Script/style-table.js"></script>
   <script type="text/javascript" src="/Script/checkregister.js"></script>
   <link rel="stylesheet" type="text/css" href="/Style/css-table.css">
   <link rel="stylesheet" type="text/css" href="/Style/buttons.css">

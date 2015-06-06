@@ -15,10 +15,10 @@ import java.util.List;
 
 public class QueryRunnerCRUDTest {
     public static void main(String[] args) throws  Exception {
-
-        String username = "jy0188362@163.com";
+        System.out.println("ÖÐÎÄìªìªµÄ");
+        /*String username = "jy0188362@163.com";
         String password = "123123";
-        /*System.out.println(username+"......"+password);*/
+        /*System.out.println(username+"......"+password);
         QueryRunner qr = new QueryRunner();
         Connection conn = null;
         conn = DbUtiles.getConnection();
@@ -26,7 +26,7 @@ public class QueryRunnerCRUDTest {
 
         List list = (List) qr.query(conn,sql, new BeanListHandler(UserInfo.class));
         UserInfo ui = (UserInfo) list.get(0);
-        System.out.println(ui.getUsername());
+        System.out.println(ui.getUsername());*/
         /*try {
             List ResultList=(List)qr.query(conn, sql, new BeanListHandler<UserInfo>(UserInfo.class));
             System.out.print(ResultList);
