@@ -17,16 +17,18 @@
     <script type="text/javascript" src="/Script/echarts-all.js"></script>
     <script type="text/javascript" src="/Script/Ajax.js"></script>
     <script>
-        /*$(function(){
-
-         })*/
-        function status() {
-            alert("123123");
-            <%--<jsp:forward page="Test.jsp" />--%>
-
-
-        }
+        var arr = {"red":{"id":1,"name":"mary"},"blue":{"id":2,"name":"diamond"}};
+        $(document).ready(function() {
+            $("#jsonid").click(function () {
+                $.each(arr,function(idx,item){
+                //输出
+                alert(item.id+"..."+item.name);
+            })
+        })
+            })
     </script>
+
+
     <style>
         div {
             float: left;
@@ -45,6 +47,11 @@
 </script>--%>
 </head>
 <body>
+<h1>Test Json</h1>
+<input type="button" id="jsonid" value="测试JSON"/>
+
+
+<br/><br/><br/>
 <h1>Test Ajax</h1><p>
 <form action="" method="get" name="form">
     <br>
