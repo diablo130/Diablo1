@@ -1,0 +1,395 @@
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/encodings.xml	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ .idea/encodings.xml	(revision )
+@@ -8,12 +8,8 @@
+     <file url="file://$PROJECT_DIR$/src/com/Diablo/JDBC/QueryRunnerCRUDTest.java" charset="GBK" />
+     <file url="file://$PROJECT_DIR$/src/com/Diablo/JDBC/UserInfo.java" charset="GBK" />
+     <file url="file://$PROJECT_DIR$/src/com/Diablo/JUnit/JUnitTest.java" charset="GBK" />
+-    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-beanutils-1.9.2.jar" charset="UTF-8" />
+-    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-collections4-4.0.jar" charset="UTF-8" />
+-    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/commons-lang3-3.4.jar" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/ezmorph-1.0.6.jar" charset="UTF-8" />
+-    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/json-lib-2.4-jdk15.jar" charset="UTF-8" />
+-    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/json-taglib-0.4.1.jar" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/fastjson-1.2.2.jar" charset="UTF-8" />
+     <file url="PROJECT" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/com/Diablo/JUnit/JUnitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- src/com/Diablo/JUnit/JUnitTest.java	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ src/com/Diablo/JUnit/JUnitTest.java	(revision )
+@@ -1,31 +1,94 @@
+ package com.Diablo.JUnit;
+ 
+-import java.io.File;
+-import java.io.FileInputStream;
+-import java.io.PrintStream;
+-import java.util.HashSet;
+-import java.util.Properties;
+-import java.util.Set;
++import java.util.ArrayList;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
+ 
+-/**
+- * Created by 黄粟 on 2015/5/14.
++import com.alibaba.fastjson.JSON;
++import com.alibaba.fastjson.TypeReference;
++import com.Diablo.JUnit.Person;
++/*
++ * 这里将json的转化和解析都放在一起了，大家可以根据实际需要来转化json字符串和解析json字符串
+  */
+ public class JUnitTest {
+-    public static void main(String[] args)throws Exception {
+-        System.out.println("中文字符");
+-        Properties prop = new Properties();
+-        File f = new File("web/File/conf/1.txt");           //相对路径
+-        prop.load(new FileInputStream(f));
+-        for(Object s:prop.keySet()) {
+-            //String key = (String)s;
+-           System.out.println(new String(((String)s).getBytes("ISO8859-1"),"UTf-8") + "......");
++    public static void main(String[] args) {
++        method1();
++        method2();
++        method3();
++        method4();
+-        }
++    }
+ 
++    static void method1(){
++        System.out.println("javabean转化示例开始----------");
++        Person person = new Person("1","fastjson",1);
+ 
+-        /*String filename = file.getName().replace("\\", "/");
+-        filename = filename.substring(filename.lastIndexOf("/") + 1);*/
++        //这里将javabean转化成json字符串
++        String jsonString = JSON.toJSONString(person);
++        System.out.println(jsonString);
++        //这里将json字符串转化成javabean对象,
++        person =JSON.parseObject(jsonString,Person.class);
++        System.out.println(person.toString());
+ 
++        System.out.println("javabean转化示例结束----------");
++    }
+ 
++    static void method2(){
++        System.out.println("List<javabean>转化示例开始----------");
++
++        Person person1 = new Person("1","fastjson1",1);
++        Person person2 = new Person("2","fastjson2",2);
++        List<Person> persons = new ArrayList<Person>();
++        persons.add(person1);
++        persons.add(person2);
++        String jsonString = JSON.toJSONString(persons);
++        System.out.println("json字符串:"+jsonString);
++
++        //解析json字符串
++        List<Person> persons2 = JSON.parseArray(jsonString,Person.class);
++        //输出解析后的person对象，也可以通过调试模式查看persons2的结构
++        System.out.println("person1对象："+persons2.get(0).toString());
++        System.out.println("person2对象："+persons2.get(1).toString());
++
++        System.out.println("List<javabean>转化示例结束----------");
++    }
++
++    static void method3(){
++        System.out.println("List<String>转化示例开始----------");
++        List<String> list = new ArrayList<String>();
++        list.add("fastjson1");
++        list.add("fastjson2");
++        list.add("fastjson3");
++        String jsonString = JSON.toJSONString(list);
++        System.out.println("json字符串:"+jsonString);
++
++        //解析json字符串
++        List<String> list2 = JSON.parseObject(jsonString,new TypeReference<List<String>>(){});
++        System.out.println(list2.get(0)+"::"+list2.get(1)+"::"+list2.get(2));
++        System.out.println("List<String>转化示例结束----------");
++
++    }
++
++    static void method4(){
++        System.out.println(" List<Map<String,Object>>转化示例开始 ----------");
++        Map<String,Object> map = new HashMap<String,Object>();
++        map.put("key1", "value1");
++        map.put("key2", "value2");
++        Map<String,Object> map2 = new HashMap<String,Object>();
++        map2.put("key1", 1);
++        map2.put("key2", 2);
++        List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
++        list.add(map);
++        list.add(map2);
++        String jsonString = JSON.toJSONString(list);
++        System.out.println("json字符串:"+jsonString);
++        //解析json字符串
++        List<Map<String,Object>> list2 = JSON.parseObject(jsonString,new TypeReference<List<Map<String,Object>>>(){});
++
++        System.out.println("map的key1值"+list2.get(0).get("key1"));
++        System.out.println("map的key2值"+list2.get(0).get("key2"));
++        System.out.println("ma2p的key1值"+list2.get(1).get("key1"));
++        System.out.println("map2的key2值"+list2.get(1).get("key2"));
+     }
+ 
+ }
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ .idea/vcs.xml	(revision )
+@@ -3,5 +3,6 @@
+   <component name="VcsDirectoryMappings">
+     <mapping directory="" vcs="Git" />
+     <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/DIABLO" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: Diablo.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Diablo.iml	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ Diablo.iml	(revision )
+@@ -43,5 +43,6 @@
+         <SOURCES />
+       </library>
+     </orderEntry>
++    <orderEntry type="library" name="lib" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: src/com/Diablo/Filter/upLoadFilter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- src/com/Diablo/Filter/upLoadFilter.java	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ src/com/Diablo/Filter/upLoadFilter.java	(revision )
+@@ -1,3 +1,4 @@
++/*
+ package com.Diablo.Filter;
+ 
+ import javax.servlet.*;
+@@ -5,11 +6,15 @@
+ import javax.servlet.http.HttpServletRequest;
+ import java.io.IOException;
+ 
++*/
+ /**
+  * Created by 黄粟 on 2015/5/29.
+  * function:上传文件监听器
++ *//*
++
+- */
++*/
+-/*@WebFilter(filterName = "upLoadFilter",urlPatterns = "")*/
++/*@WebFilter(filterName = "upLoadFilter",urlPatterns = "")*//*
++
+ public class upLoadFilter implements Filter {
+     public void destroy() {
+     }
+@@ -24,3 +29,4 @@
+     }
+ 
+ }
++*/
+Index: web/fileupload.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/fileupload.jsp	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ web/fileupload.jsp	(revision )
+@@ -61,8 +61,7 @@
+ <!--注意：1、地址 2、封装类型 3、提交类型-->
+ <form action="${pageContext.request.contextPath}/src/com.Diablo.Web/UploadHanderServlet" enctype="multipart/form-data" method="post">
+     上传用户：<input type="text" name="username"><br/>
+-    上传文件1：<input type="file" name="file1"><br/>
+-    上传文件2：<input type="file" name="file2"><br/>
++    上传文件：<input type="file" name="file1"><br/>
+     <input type="submit" value="提交">
+ </form>
+ <br/><br/><br/>
+\ No newline at end of file
+Index: src/com/Diablo/Filter/UploadRequestWrapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- src/com/Diablo/Filter/UploadRequestWrapper.java	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ src/com/Diablo/Filter/UploadRequestWrapper.java	(revision )
+@@ -1,3 +1,4 @@
++/*
+ package com.Diablo.Filter;
+ 
+ import org.apache.commons.fileupload.DiskFileUpload;
+@@ -12,10 +13,12 @@
+ import java.io.OutputStream;
+ import java.util.*;
+ 
++*/
+ /**
+  * Created by 黄粟 on 2015/5/29.
+  * function:文件上传类
+- */
++ *//*
++
+ public class UploadRequestWrapper extends HttpServletRequestWrapper{
+     //文件类型头
+     private static final String MULTIPART_HEADER = "Content-type";
+@@ -31,17 +34,23 @@
+                 request.getHeader(MULTIPART_HEADER).startsWith("multipart/form-data");
+         if (multipart) {            //如果是上传的文件
+             try {
+-                /*DiskFileUpload upload = new DiskFileUpload();*/
++                */
++/*DiskFileUpload upload = new DiskFileUpload();*//*
++
+                 //过时的方法，被替换，代替的方法如下
++                */
+-                /*1) public static final int DEFAULT_SIZE_THRESHOLD：将文件保存在内存还是磁盘临时文件夹的默认临界值，值为10240，即10kb。
++/*1) public static final int DEFAULT_SIZE_THRESHOLD：将文件保存在内存还是磁盘临时文件夹的默认临界值，值为10240，即10kb。
+ 
+-                2) private File repository：用于配置在创建文件项目时，当文件项目大于临界值时使用的临时文件夹，默认采用系统默认的临时文件路径，可以通过系统属性 java.io.tmpdir获取。*/
++                2) private File repository：用于配置在创建文件项目时，当文件项目大于临界值时使用的临时文件夹，默认采用系统默认的临时文件路径，可以通过系统属性 java.io.tmpdir获取。*//*
+ 
++
+                 //构造一个上传文件类
+                 DiskFileItemFactory factory = new DiskFileItemFactory(0,new File("web/File/conf/"));
++                */
+-                /*factory.setSizeThreshold(0);
++/*factory.setSizeThreshold(0);
+                 if(saveDir != null)
+-                    factory.setRepository(new File(saveDir));*/
++                    factory.setRepository(new File(saveDir));*//*
++
+                 ServletFileUpload upload = new ServletFileUpload(factory);
+ 
+ 
+@@ -98,3 +107,4 @@
+         return super.getParameter(name);
+     }
+ }
++*/
+Index: .idea/artifacts/Diablo_war_exploded.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/artifacts/Diablo_war_exploded.xml	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ .idea/artifacts/Diablo_war_exploded.xml	(revision )
+@@ -9,6 +9,23 @@
+         </element>
+         <element id="directory" name="lib">
+           <element id="library" level="module" name="JUnit4" module-name="Diablo" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/ezmorph-1.0.6.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-io-2.4.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-lang3-3.4.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/json-taglib-0.4.1.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/json-lib-2.4-jdk15.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-dbutils-1.6.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-logging-1.2.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/urlrewritefilter-4.0.3.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-beanutils-1.9.2.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-collections4-4.0.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-fileupload-1.3.1.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/taglibs-standard-compat-1.2.5.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.34-bin.jar" />
++          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/fastjson-1.2.2.jar" />
+         </element>
+       </element>
+     </root>
+\ No newline at end of file
+Index: src/com/Diablo/JDBC/Person.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- src/com/Diablo/JDBC/Person.java	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ src/com/Diablo/JDBC/Person.java	(revision )
+@@ -13,7 +13,11 @@
+     private String mobile;
+     private String telephone;
+     private String city;
+-
++    public Person(int id,String name,int age){
++        this.id=id;
++        this.name=name;
++        this.age=age;
++    }
+     public void setId(int id) {
+         this.id = id;
+     }
+Index: src/com/Diablo/JDBC/QueryRunnerCRUDTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- src/com/Diablo/JDBC/QueryRunnerCRUDTest.java	(revision 65026d46bbfac12dcc015ae792453e4acd392bfe)
++++ src/com/Diablo/JDBC/QueryRunnerCRUDTest.java	(revision )
+@@ -10,31 +10,31 @@
+ import org.apache.commons.dbutils.handlers.BeanListHandler;
+ 
+ import java.sql.Connection;
++import java.sql.SQLException;
++import java.util.Iterator;
+ import java.util.List;
+ /*import org.junit.Test;*/
+ 
+ public class QueryRunnerCRUDTest {
+     public static void main(String[] args) throws  Exception {
+-        System.out.println("中文飒飒的");
+-        /*String username = "jy0188362@163.com";
++        String username = "jy0188362@163.com";
+         String password = "123123";
+-        /*System.out.println(username+"......"+password);
++        System.out.println(username+"......"+password);
+         QueryRunner qr = new QueryRunner();
+         Connection conn = null;
+         conn = DbUtiles.getConnection();
+         String sql = "SELECT * from information.用户注册表 WHERE password='"+ password +"'";
+ 
+-        List list = (List) qr.query(conn,sql, new BeanListHandler(UserInfo.class));
++        /*List list = (List) qr.query(conn,sql, new BeanListHandler(UserInfo.class));
+         UserInfo ui = (UserInfo) list.get(0);
+-        System.out.println(ui.getUsername());*/
+-        /*try {
++        try {
+             List ResultList=(List)qr.query(conn, sql, new BeanListHandler<UserInfo>(UserInfo.class));
+             System.out.print(ResultList);
+         } catch (Exception e) {
+             e.printStackTrace();
+-        }*/
+-
+-           /*List al = null;
++        }
++*/
++           List al = null;
+             try {
+                 al = (List)qr.query(conn,"select * from 公交数据表", new BeanListHandler<BusInfo>(BusInfo.class));
+             } catch (SQLException e) {
+@@ -45,7 +45,7 @@
+                 BusInfo bi = (BusInfo)ite.next();
+                 System.out.print(bi.get日期() + "|" + bi.get到站人数() + "|" + bi.get图() + "|" + bi.get节());
+                 System.out.println();
+-            }*/
++            }
+     }
+ 
+     /*

@@ -1,3 +1,4 @@
+/*
 package com.Diablo.Filter;
 
 import org.apache.commons.fileupload.DiskFileUpload;
@@ -12,10 +13,12 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.*;
 
+*/
 /**
  * Created by 黄粟 on 2015/5/29.
  * function:文件上传类
- */
+ *//*
+
 public class UploadRequestWrapper extends HttpServletRequestWrapper{
     //文件类型头
     private static final String MULTIPART_HEADER = "Content-type";
@@ -31,17 +34,23 @@ public class UploadRequestWrapper extends HttpServletRequestWrapper{
                 request.getHeader(MULTIPART_HEADER).startsWith("multipart/form-data");
         if (multipart) {            //如果是上传的文件
             try {
-                /*DiskFileUpload upload = new DiskFileUpload();*/
-                //过时的方法，被替换，代替的方法如下
-                /*1) public static final int DEFAULT_SIZE_THRESHOLD：将文件保存在内存还是磁盘临时文件夹的默认临界值，值为10240，即10kb。
+                */
+/*DiskFileUpload upload = new DiskFileUpload();*//*
 
-                2) private File repository：用于配置在创建文件项目时，当文件项目大于临界值时使用的临时文件夹，默认采用系统默认的临时文件路径，可以通过系统属性 java.io.tmpdir获取。*/
+                //过时的方法，被替换，代替的方法如下
+                */
+/*1) public static final int DEFAULT_SIZE_THRESHOLD：将文件保存在内存还是磁盘临时文件夹的默认临界值，值为10240，即10kb。
+
+                2) private File repository：用于配置在创建文件项目时，当文件项目大于临界值时使用的临时文件夹，默认采用系统默认的临时文件路径，可以通过系统属性 java.io.tmpdir获取。*//*
+
 
                 //构造一个上传文件类
                 DiskFileItemFactory factory = new DiskFileItemFactory(0,new File("web/File/conf/"));
-                /*factory.setSizeThreshold(0);
+                */
+/*factory.setSizeThreshold(0);
                 if(saveDir != null)
-                    factory.setRepository(new File(saveDir));*/
+                    factory.setRepository(new File(saveDir));*//*
+
                 ServletFileUpload upload = new ServletFileUpload(factory);
 
 
@@ -98,3 +107,4 @@ public class UploadRequestWrapper extends HttpServletRequestWrapper{
         return super.getParameter(name);
     }
 }
+*/
