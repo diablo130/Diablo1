@@ -146,7 +146,7 @@ To change this template use File | Settings | File Templates.
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle collapsed" data-parent="#accordion-364724"
-               data-toggle="collapse" href="http://www.163.com">Introduction(介绍)</a>
+               data-toggle="collapse" href="index.jsp">Introduction(介绍)</a>
           </div>
         </div>
         <div class="accordion-group">
@@ -198,7 +198,7 @@ To change this template use File | Settings | File Templates.
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-parent="#accordion-364724" data-
-               toggle="collapse" href="http://www.test.com">Help(帮助)</a>
+               toggle="collapse" href="showdata.jsp">Help(帮助)</a>
           </div>
         </div>
       </div>

@@ -12,12 +12,14 @@
   <div class="accordion" id="accordion-364724">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle collapsed" data-parent="#accordion-364724"  href="index.jsp">Introduction(介绍)</a>
+        <a class="accordion-toggle collapsed" data-parent="#accordion-364724"
+           data-toggle="collapse" href="index.jsp">Introduction(介绍)</a>
       </div>
     </div>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle collapsed" data-parent="#accordion-364724" href="#accordion-element-738713">Filing(文件处理)</a>
+        <a class="accordion-toggle collapsed" data-parent="#accordion-364724"
+           data-toggle="collapse" href="#accordion-element-738713">Filing(文件处理)</a>
       </div>
       <div class="accordion-body collapse" id="accordion-element-738713">
         <div class="accordion-inner">
@@ -36,7 +38,7 @@
     </div>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-parent="#accordion-364724"  href="#accordion-element-374288">Data-Analysis(数据分析)</a>
+        <a class="accordion-toggle" data-parent="#accordion-364724" data-toggle="collapse" href="#accordion-element-374288">Data-Analysis(数据分析)</a>
       </div>
       <div class="accordion-body collapse" id="accordion-element-374288">
         <div class="accordion-inner">
@@ -56,7 +58,7 @@
     <div class="accordion-group">
       <div class="accordion-heading">
         <a class="accordion-toggle collapsed" data-parent="#accordion-364724"
-            href="mailto:jy0188836@163.com?subject=FeedBack&amp;body=Dear%20xxx
+           data-toggle="collapse" href="mailto:jy0188836@163.com?subject=FeedBack&amp;body=Dear%20xxx
 %3A" target="_blank">Contact Me(联系我)</a>
       </div>
     </div>
