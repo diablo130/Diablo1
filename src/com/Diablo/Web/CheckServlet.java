@@ -25,12 +25,13 @@ public class CheckServlet extends HttpServlet {
             response.setHeader("Cache-Control", "no-store");
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);
-            String name = request.getParameter("id");
-            if(name.equals("1")) {
-                out.write("∫√»À");
+            String name = request.getParameter("info");
+            if(name.equals("waiting")) {
+                if(request.getAttribute("message")=="ok")
+                out.write("Success");
             }
             else {
-                out.write("ªµµ∞");
+                out.write("Failure");
             }
         } finally {
             out.close();

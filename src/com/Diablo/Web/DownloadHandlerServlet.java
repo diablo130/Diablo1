@@ -5,8 +5,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.Map;
 
 /**
  * Created by 黄粟 on 2015/6/4.
@@ -19,11 +21,15 @@ public class DownloadHandlerServlet extends HttpServlet {
         String fileName = request.getParameter("filename");  //23239283-92489-阿凡达.avi
         //fileName = new String(fileName.getBytes("iso8859-1"),"UTF-8");
         //上传的文件都是保存在/WEB-INF/upload目录下的子目录当中
-        String fileSaveRootPath=this.getServletContext().getRealPath("/WEB-INF/upload");
+        /*String fileSaveRootPath=this.getServletContext().getRealPath("/WEB-INF/upload");*/
+        HttpSession session=request.getSession();
+        Map<String,String> map= (Map<String, String>) session.getAttribute("fileNameMap");
+        String fileSaveRootPath = map.get(fileName);
         /*//通过文件名找出文件的所在目录
         String path = findFileSavePathByFileName(fileName,fileSaveRootPath);*/
         //得到要下载的文件
-        File file = new File(fileSaveRootPath + "\\" + fileName);
+        File file = new File(fileSaveRootPath);
+        System.out.println(file.getAbsolutePath());
         //如果文件不存在
         if(!file.exists()){
             request.setAttribute("message", "您要下载的资源已被删除！！");
@@ -38,7 +44,7 @@ public class DownloadHandlerServlet extends HttpServlet {
         response.setHeader("Content-disposition","attachment; filename="+new String(fileName.getBytes("gb2312"),"iso8859-1"));
         //读取要下载的文件，保存到文件输入流
 
-        FileInputStream in = new FileInputStream(fileSaveRootPath + "\\" + fileName);
+        FileInputStream in = new FileInputStream(fileSaveRootPath);
         //创建输出流
         OutputStream out = response.getOutputStream();
         //创建缓冲区
