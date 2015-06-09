@@ -20,7 +20,6 @@ To change this template use File | Settings | File Templates.
 
 <link rel="stylesheet" type="text/css" href="/Style/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/Style/buttons.css">
-<link rel="stylesheet" type="text/css" href="/Style/table.css">
 <script type="text/javascript" src="/Script/jquery.js"></script>
 <script type="text/javascript" src="/Script/bootstrap.min.js"></script>
 <script type="text/javascript" src="/Script/esl.js"></script>
@@ -205,62 +204,33 @@ To change this template use File | Settings | File Templates.
     </div>
 
     <div class="span8" style="border: aqua 2px solid;height: 500px">
-     <%-- <h3 style="color: #999999">Fast-Entry</h3>--%>
           <h3 style="color: #999999;padding-top: 10px;padding-left: 10px;">
-            Result Display<%--<button type="button">abc</button>--%>
+            File UpLoad<%--<button type="button">abc</button>--%>
           </h3>
-          <script>
-            $("#fileupload_input").fileupload({
-              url:"files/upload",//文件上传地址，当然也可以直接写在input的data-url属性内
-              formData:{param1:"p1",param2:"p2"},//如果需要额外添加参数可以在这里添加
-              done:function(e,result){
-                //done方法就是上传完毕的回调函数，其他回调函数可以自行查看api
-                //注意result要和jquery的ajax的data参数区分，这个对象包含了整个请求信息
-                //返回的数据在result.result中，假设我们服务器返回了一个json对象
-                console.log(JSON.stringify(result.result));
-              }
-            })
-          </script>
-          <div>
-              <input type="file" name="fileupload_input"  />
-          </div>
-          <%--<div id="main"style="height: 400px">
-              <script type="text/javascript">
-                // 基于准备好的dom，初始化echarts图表
-                var myChart = echarts.init(document.getElementById('main'));
-
-                var option = {
-                  tooltip: {
-                    show: true
-                  },
-                  legend: {
-                    data:['销量']
-                  },
-                  xAxis : [
-                    {
-                      type : 'category',
-                      data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-                    }
-                  ],
-                  yAxis : [
-                    {
-                      type : 'value'
-                    }
-                  ],
-                  series : [
-                    {
-                      "name":"销量",
-                      "type":"bar",
-                      "data":[5, 20, 40, 10, 10, 20]
-                    }
-                  ]
-                };
-
-                // 为echarts对象加载数据
-                myChart.setOption(option);
-              </script>
-          </div>
---%>
+          <hr />
+      <div style="border: #ff0714 1px solid;height: 380px">
+        <form action="${pageContext.request.contextPath}/src/com.Diablo.Web/UploadHanderServlet" enctype="multipart/form-data" method="post">
+          <input type="file" name="ada" multiple="multiple"/>
+          <input type="submit" value="submit"/>
+        <%--<table style="margin: 130px;">
+            <tr>
+              <th>Choose File Type:</th>
+              <th><input type="radio" name="filetype"/>Word File </th>
+              <th><input type="radio" name="filetype"/>Excel File </th>
+            </tr>
+            <tr>
+              <td>Choose UpFiles(*.doc) or Excel(*.xlsx)</td>
+              <td colspan="2"><input type="file" multiple="multiple" name=""/></td>
+            </tr>
+            <tr>
+              <td colspan="3" align="center"><input class="button button-glow button-rounded button-caution" type="submit" id="subid" value="Up to Server"/> </td>
+            </tr>
+            <tr>
+              <td colspan="3" align="center"><span id="feedbackinfo"></span></td>
+            </tr>
+          </table>--%>
+        </form>
+      </div>
     </div>
   </div>
 </div>
